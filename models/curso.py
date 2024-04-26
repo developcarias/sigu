@@ -20,12 +20,8 @@ class Estudiante(models.Model):
     lastname = fields.Char(string='Apellido', required=True)
     no_identif = fields.Char(string='Número de Identificación', required=True)
     estatus = fields.Selection([('activo', 'Activo'), ('inactivo', 'Inactivo')], string='Estatus', required=True, default='activo')
-    unidad_curricular = fields.Many2many('gestor.unidad_curricular', string='Unidad Curricular', required=True)
     pnf = fields.Many2one('gestor.pnf', string='PNF', required=True)
-    # turno_id = fields.Many2one('gestor.turno', string='Turno')
-    trayecto=fields.Many2one('gestor.trayecto', string='Trayecto', required=True)
-    semestre=fields.Many2one('gestor.semestre', string='Semestre', required=True)
-    clases_inscritas_id=fields.One2many('gestor.clase_inscrita','estudiante_id',string='Clases Inscritas')
+    semestre = fields.Many2one('gestor.semestre', string='Semestre', required=True)
 
 
 class Pnf(models.Model):
@@ -87,7 +83,7 @@ class Aula(models.Model):
     capacidad = fields.Integer(string='Capacidad', required=True)
     edificio = fields.Char(string='Edificio', required=True)
     piso = fields.Integer(string='Piso', required=True)
-    nucleo = fields.Many2one('gestor.nucleo', string='Nucleo', required=False)
+    nucleo = fields.Many2one('gestor.nucleo', string='Nucleo', required=True)
 
 
 class Modalidad(models.Model):
@@ -147,7 +143,8 @@ class Curso(models.Model):
     profesor_id = fields.Many2one('gestor.profesor', string='Profesor', required=True)
     unidad_curricular_id = fields.Many2one('gestor.unidad_curricular', string='Unidad Curricular', required=True)
     periodo_id = fields.Many2one('gestor.periodo', string='Periodo', required=True)
-    Modalidad = fields.Many2one('gestor.modalidad', string='Modalidad', required=True)
+    modalidad = fields.Many2one('gestor.modalidad', string='Modalidad', required=True)
+    semestre = fields.Many2one('gestor.semestre', string='Semestre', required=True)
 
 
 class ClaseInscrita(models.Model):
@@ -155,7 +152,7 @@ class ClaseInscrita(models.Model):
     _description = 'Modelo para representar las clases inscritas por los estudiantes'
 
     estudiante_id = fields.Many2one('gestor.estudiante', string='Estudiante', required=True)
-    curso_id = fields.Many2many('gestor.curso', string='Horario de la Clase', required=True)
+    curso_id = fields.Many2one('gestor.curso', string='Horario de la Clase', required=True)
 
     estudiante_identif = fields.Char(string='Identificación del Estudiante', compute='_compute_estudiante_identif')
     estudiante_name = fields.Char(string='Nombre del Estudiante', compute='_compute_estudiante_name')
@@ -170,6 +167,9 @@ class ClaseInscrita(models.Model):
     turno = fields.Char(string='Turno', compute='_compute_turno')
     aula = fields.Char(string='Aula', compute='_compute_aula')
     nucleo = fields.Char(string='Nucleo', compute='_compute_nucleo')
+    pnf = fields.Char(string='Pnf', compute='_compute_pnf')
+    trayecto = fields.Char(string='Trayecto', compute='_compute_trayecto')
+    semestre = fields.Char(string='Semestre', compute='_compute_semestre')
 
     @api.depends('estudiante_id.no_identif')
     def _compute_estudiante_identif(self):
@@ -235,4 +235,19 @@ class ClaseInscrita(models.Model):
     def _compute_nucleo(self):
         for record in self:
             record.nucleo = record.curso_id.dias_con_horas_ids.aula_id.nucleo.name
+
+    @api.depends('curso_id.unidad_curricular_id.pnf.name')
+    def _compute_pnf(self):
+        for record in self:
+            record.pnf = record.curso_id.unidad_curricular_id.pnf.name
+
+    @api.depends('curso_id.semestre.trayecto_id.numero')
+    def _compute_trayecto(self):
+        for record in self:
+            record.trayecto = record.curso_id.semestre.trayecto_id.numero
+
+    @api.depends('curso_id.semestre.numero')
+    def _compute_semestre(self):
+        for record in self:
+            record.semestre = record.curso_id.semestre.numero
 

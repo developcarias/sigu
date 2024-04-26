@@ -41,14 +41,13 @@
             <field name="trayecto_id" ref="trayecto1"/>
         </record>
 
-                <!-- Datos de prueba para el modelo 'gestor.estudiante' -->
+        <!-- Datos de prueba para el modelo 'gestor.estudiante' -->
         <record id="estudiante1" model="gestor.estudiante">
             <field name="name">María</field>
             <field name="lastname">González</field>
             <field name="no_identif">V-87654321</field>
             <field name="estatus">activo</field>
             <field name="pnf" ref="pnf1"/>
-            <field name="trayecto" ref="trayecto1"/>
             <field name="semestre" ref="semestre1"/>
         </record>
 
@@ -113,13 +112,14 @@
             <field name="profesor_id" ref="profesor1"/>
             <field name="unidad_curricular_id" ref="unidad_curricular1"/>
             <field name="periodo_id" ref="periodo1"/>
-            <field name="Modalidad" ref="modalidad1"/>
+            <field name="modalidad" ref="modalidad1"/>
+            <field name="semestre" ref="semestre1"/>
         </record>
 
         <!-- Datos de prueba para el modelo 'gestor.clase_inscrita' -->
         <record id="clase_inscrita1" model="gestor.clase_inscrita">
             <field name="estudiante_id" ref="estudiante1"/>
-            <field name="curso_id" eval="[(6, 0, [ref('curso1')])]"/>
+            <field name="curso_id" ref="curso1"/>
         </record>
 
     </data>

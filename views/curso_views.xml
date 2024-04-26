@@ -8,19 +8,23 @@
                 <field name="unidad_curricular_name" string="Unidad Curricular"/>
             </search> -->
             <tree string="Horario del Estudiante">
-                <field name="estudiante_identif" string="Identificación del Estudiante"/>
-                <field name="estudiante_name" string="Nombre del Estudiante"/>
-                <field name="profesor_identif" string="Identificación del Profesor"/>
+                <field name="unidad_curricular_name" string="Unidad Curricular"/>
                 <field name="profesor_name" string="Nombre del Profesor"/>
-                <field name="unidad_curricular_name" string="Nombre de la Unidad Curricular"/>
-                <field name="modalidad" string="Modalidad"/>
-                <field name="periodo" string="Periodo"/>
+                <field name="profesor_identif" string="Identificación del Profesor"/>                
+                <field name="dia" string="Día"/>
                 <field name="hora_inicio" string="Hora de Inicio"/>
                 <field name="hora_fin" string="Hora de Fin"/>
-                <field name="dia" string="Día"/>
-                <field name="turno" string="Turno"/>
-                <field name="aula" string="Aula"/>
                 <field name="nucleo" string="Núcleo"/>
+                <field name="pnf" string="Pnf"/>
+                <field name="trayecto" string="Trayecto"/>
+                <field name="semestre" string="Semestre"/>
+                <field name="modalidad" string="Modalidad"/>
+                <field name="aula" string="Aula"/>
+                <field name="estudiante_name" string="Nombre del Estudiante"/>
+                <field name="estudiante_identif" string="Identificación del Estudiante"/>                
+                <field name="periodo" string="Periodo"/>
+                <field name="turno" string="Turno"/>
+
             </tree>
         </field>
     </record>

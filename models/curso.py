@@ -196,10 +196,10 @@ class ClaseInscrita(models.Model):
         for record in self:
             record.unidad_curricular_name = record.curso_id.unidad_curricular_id.name
 
-    @api.depends('curso_id.Modalidad.modalidad')
+    @api.depends('curso_id.modalidad.modalidad')
     def _compute_modalidad(self):
         for record in self:
-            record.modalidad = record.curso_id.Modalidad.modalidad
+            record.modalidad = record.curso_id.modalidad.modalidad
 
     @api.depends('curso_id.periodo_id.name')
     def _compute_periodo(self):

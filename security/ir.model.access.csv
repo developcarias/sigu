@@ -1,0 +1,16 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_gestor_profesor,access_gestor_profesor,model_gestor_profesor,base.group_user,1,1,1,1
+access_gestor_estudiante,access_gestor_estudiante,model_gestor_estudiante,base.group_user,1,1,1,1
+access_gestor_pnf,access_gestor_pnf,model_gestor_pnf,base.group_user,1,1,1,1
+access_gestor_trayecto,access_gestor_trayecto,model_gestor_trayecto,base.group_user,1,1,1,1
+access_gestor_semestre,access_gestor_semestre,model_gestor_semestre,base.group_user,1,1,1,1
+access_gestor_nucleo,access_gestor_nucleo,model_gestor_nucleo,base.group_user,1,1,1,1
+access_gestor_periodo,access_gestor_periodo,model_gestor_periodo,base.group_user,1,1,1,1
+access_gestor_unidad_curricular,access_gestor_unidad_curricular,model_gestor_unidad_curricular,base.group_user,1,1,1,1
+access_gestor_aula,access_gestor_aula,model_gestor_aula,base.group_user,1,1,1,1
+access_gestor_modalidad,access_gestor_modalidad,model_gestor_modalidad,base.group_user,1,1,1,1
+access_gestor_turno,access_gestor_turno,model_gestor_turno,base.group_user,1,1,1,1
+access_gestor_dia,access_gestor_dia,model_gestor_dia,base.group_user,1,1,1,1
+access_gestor_curso,access_gestor_curso,model_gestor_curso,base.group_user,1,1,1,1
+access_gestor_dias_con_horas,access_gestor_dias_con_horas,model_gestor_dias_con_horas,base.group_user,1,1,1,1
+access_gestor_clase_inscrita,access_gestor_clase_inscrita,model_gestor_clase_inscrita,base.group_user,1,1,1,1

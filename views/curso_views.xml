@@ -1,0 +1,44 @@
+<odoo>
+    <record id="view_estudiante_horario_tree" model="ir.ui.view">
+        <field name="name">estudiante.horario.tree</field>
+        <field name="model">gestor.clase_inscrita</field>
+        <field name="arch" type="xml">
+            <!-- <search string="Search...">
+                <field name="profesor_name" string="Profesor"/>
+                <field name="unidad_curricular_name" string="Unidad Curricular"/>
+            </search> -->
+            <tree string="Horario del Estudiante">
+                <field name="estudiante_identif" string="Identificación del Estudiante"/>
+                <field name="estudiante_name" string="Nombre del Estudiante"/>
+                <field name="profesor_identif" string="Identificación del Profesor"/>
+                <field name="profesor_name" string="Nombre del Profesor"/>
+                <field name="unidad_curricular_name" string="Nombre de la Unidad Curricular"/>
+                <field name="modalidad" string="Modalidad"/>
+                <field name="periodo" string="Periodo"/>
+                <field name="hora_inicio" string="Hora de Inicio"/>
+                <field name="hora_fin" string="Hora de Fin"/>
+                <field name="dia" string="Día"/>
+                <field name="turno" string="Turno"/>
+                <field name="aula" string="Aula"/>
+                <field name="nucleo" string="Núcleo"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_curso">
+        <field name="name">Cursos</field>
+        <field name="res_model">gestor.clase_inscrita</field>
+        <field name="view_mode">tree</field>
+    </record>
+
+    <menuitem
+        id="menu_curso_parent"
+        name="Cursos"
+        sequence="10" />
+
+    <menuitem
+        id="menu_cruso"
+        action="action_curso"
+        parent="menu_curso_parent"
+        sequence="5" />
+</odoo>

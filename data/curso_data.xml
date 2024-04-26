@@ -1,0 +1,126 @@
+<odoo>
+    <data noupdate="5">
+
+        <!-- Datos de prueba para el modelo 'gestor.pnf' -->
+        <record id="pnf1" model="gestor.pnf">
+            <field name="name">PNF en Informática</field>
+        </record>
+
+        <!-- Datos de prueba para el modelo 'gestor.nucleo' -->
+        <record id="nucleo5" model="gestor.nucleo">
+            <field name="name">Núcleo Los Teques</field>
+            <field name="codigo">NTQ</field>
+            <field name="ubicacion">1</field>
+            <field name="pnf" ref="pnf1"/>
+        </record>
+
+        <!-- Datos de prueba para el modelo 'gestor.periodo' -->
+        <record id="periodo1" model="gestor.periodo">
+            <field name="name">Periodo 1</field>
+            <field name="fecha_inicio">2024-01-01</field>
+            <field name="fecha_fin">2024-06-30</field>
+        </record>
+
+        <!-- Datos de prueba para el modelo 'gestor.profesor' -->
+        <record id="profesor1" model="gestor.profesor">
+            <field name="name">Juan</field>
+            <field name="lastname">Pérez</field>
+            <field name="no_identif">V-12345678</field>
+            <field name="estatus">activo</field>
+            <field name="pnf" ref="pnf1"/>
+        </record>
+
+        <!-- Datos de prueba para el modelo 'gestor.trayecto' -->
+        <record id="trayecto1" model="gestor.trayecto">
+            <field name="numero">1</field>
+        </record>
+
+        <!-- Datos de prueba para el modelo 'gestor.semestre' -->
+        <record id="semestre1" model="gestor.semestre">
+            <field name="numero">1</field>
+            <field name="trayecto_id" ref="trayecto1"/>
+        </record>
+
+                <!-- Datos de prueba para el modelo 'gestor.estudiante' -->
+        <record id="estudiante1" model="gestor.estudiante">
+            <field name="name">María</field>
+            <field name="lastname">González</field>
+            <field name="no_identif">V-87654321</field>
+            <field name="estatus">activo</field>
+            <field name="pnf" ref="pnf1"/>
+            <field name="trayecto" ref="trayecto1"/>
+            <field name="semestre" ref="semestre1"/>
+        </record>
+
+        <!-- Datos de prueba para el modelo 'gestor.unidad_curricular' -->
+        <record id="unidad_curricular1" model="gestor.unidad_curricular">
+            <field name="name">Matemáticas I</field>
+            <field name="unidad_de_credito">4</field>
+            <field name="pnf" ref="pnf1"/>
+        </record>
+
+        <!-- Datos de prueba para el modelo 'gestor.aula' -->
+        <record id="aula1" model="gestor.aula">
+            <field name="name">Aula 101</field>
+            <field name="capacidad">30</field>
+            <field name="edificio">Edificio A</field>
+            <field name="piso">1</field>
+            <field name="nucleo" ref="nucleo5"/>
+        </record>
+
+        <!-- Datos de prueba para el modelo 'gestor.modalidad' -->
+        <record id="modalidad1" model="gestor.modalidad">
+            <field name="modalidad">Presencial</field>
+        </record>
+
+        <!-- Datos de prueba para el modelo 'gestor.turno' -->
+        <record id="turno1" model="gestor.turno">
+            <field name="name">Turno Mañana</field>
+            <field name="descripcion">Diurno</field>
+        </record>
+
+        <!-- Datos de prueba para el modelo 'gestor.dia' -->
+        <record id="dia1" model="gestor.dia">
+            <field name="name">Lunes</field>
+        </record>
+
+        <!-- Datos de prueba para el modelo 'gestor.dias_con_horas' -->
+        <record id="dias_con_horas1" model="gestor.dias_con_horas">
+            <field name="hora_inicio">2024-04-25 08:00:00</field>
+            <field name="hora_fin">2024-04-25 10:00:00</field>
+            <field name="dia_ids" ref="dia1"/>
+            <field name="turno_id" ref="turno1"/>
+            <field name="aula_id" ref="aula1"/>
+        </record>
+
+        <!-- Datos de prueba para el modelo 'gestor.modalidad' -->
+        <record id="modalidad1" model="gestor.modalidad">
+            <field name="modalidad">Presencial</field>
+        </record>
+
+        <!-- Datos de prueba para el modelo 'gestor.dias_con_horas' -->
+        <record id="dias_con_horas1" model="gestor.dias_con_horas">
+            <field name="hora_inicio">2024-04-25 08:00:00</field>
+            <field name="hora_fin">2024-04-25 10:00:00</field>
+            <field name="dia_ids" ref="dia1"/>
+            <field name="turno_id" ref="turno1"/>
+            <field name="aula_id" ref="aula1"/>
+        </record>
+
+        <!-- Datos de prueba para el modelo 'gestor.curso' -->
+        <record id="curso1" model="gestor.curso">
+            <field name="dias_con_horas_ids" eval="[(6, 0, [ref('dias_con_horas1')])]"/>
+            <field name="profesor_id" ref="profesor1"/>
+            <field name="unidad_curricular_id" ref="unidad_curricular1"/>
+            <field name="periodo_id" ref="periodo1"/>
+            <field name="Modalidad" ref="modalidad1"/>
+        </record>
+
+        <!-- Datos de prueba para el modelo 'gestor.clase_inscrita' -->
+        <record id="clase_inscrita1" model="gestor.clase_inscrita">
+            <field name="estudiante_id" ref="estudiante1"/>
+            <field name="curso_id" eval="[(6, 0, [ref('curso1')])]"/>
+        </record>
+
+    </data>
+</odoo>

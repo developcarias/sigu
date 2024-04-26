@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'sigu',
+    'name': 'sigu-develop',
     'version': '1.1',
-    'category': 'sigu',
-    'summary': 'sigu',
+    'category': 'sigu-develop',
+    'summary': 'sigu-develop',
     'description': "",
     'depends': ['base'],
     'data': [

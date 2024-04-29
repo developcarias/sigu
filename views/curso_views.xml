@@ -8,6 +8,9 @@
                 <field name="unidad_curricular_name" string="Unidad Curricular"/>
             </search> -->
             <tree string="Horario del Estudiante">
+                <header>
+                    <button name="action_open_url" type="object" string="Descargar Excel" />
+                </header>
                 <field name="unidad_curricular_name" string="Unidad Curricular"/>
                 <field name="profesor_name" string="Nombre del Profesor"/>
                 <field name="profesor_identif" string="Identificación del Profesor"/>                

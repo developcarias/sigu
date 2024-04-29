@@ -1,4 +1,5 @@
-from odoo import models, fields, api
+from odoo import http, models, fields, api
+from werkzeug.utils import redirect
 
 
 class Profesor(models.Model):
@@ -251,3 +252,10 @@ class ClaseInscrita(models.Model):
         for record in self:
             record.semestre = record.curso_id.semestre.numero
 
+    def action_open_url(self):
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_url',
+            'url': '/download_excel',
+            'target': 'new',
+        }
